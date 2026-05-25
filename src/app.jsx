@@ -1,6 +1,7 @@
-import { Button } from './components/ui/button'
+import { Button } from '@/components/ui/button'
 
 const App = () => {
+  // window.document.documentElement.classList.add('dark')
   return (
     <div className="flex min-h-screen items-center justify-center">
       <Button>Hello world!</Button>
