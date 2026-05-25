@@ -36,6 +36,7 @@ export default [
       'no-undef': 'off',
       'react/prop-types': 'off',
       'runtime-refresh/only-export-components': 'off',
+      'react/no-unescaped-entities': 'off',
     },
   },
 ]
