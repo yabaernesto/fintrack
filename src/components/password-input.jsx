@@ -1,26 +1,43 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 
-const PasswordInput = ({ placeholder = 'Digite sua senha' }) => {
+const PasswordInput = forwardRef(function PasswordInput(
+  { placeholder = 'Digite sua senha', className, ...props },
+  ref
+) {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false)
+
   return (
     <div className="relative">
       <Input
+        ref={ref}
         type={passwordIsVisible ? 'text' : 'password'}
         placeholder={placeholder}
+        className={`pr-10 ${className ?? ''}`}
+        {...props}
       />
+
       <Button
+        type="button"
         variant="ghost"
-        className="absolute top-0 right-0 bottom-0 my-auto mr-1 h-8 w-8"
+        size="icon"
+        tabIndex={-1}
+        className="absolute top-1/2 right-2 h-7 w-7 -translate-y-1/2"
         onClick={() => setPasswordIsVisible((prev) => !prev)}
       >
-        {passwordIsVisible ? <EyeOffIcon /> : <EyeIcon />}
+        {passwordIsVisible ? (
+          <EyeOffIcon className="h-4 w-4" />
+        ) : (
+          <EyeIcon className="h-4 w-4" />
+        )}
       </Button>
     </div>
   )
-}
+})
+
+PasswordInput.displayName = 'PasswordInput'
 
 export default PasswordInput
